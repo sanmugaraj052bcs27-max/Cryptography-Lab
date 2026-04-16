@@ -1,0 +1,43 @@
+const express = require("express");
+const cors = require("cors");
+const { modExp, isPrimeFermat, isPrimitiveRoot } = require("./utils");
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+app.use(express.static("public"));
+
+app.post("/compute", (req, res) => {
+    const { q, alpha, a, b } = req.body;
+    let steps = [];
+
+    if (!isPrimeFermat(q))
+        return res.json({ error: "q is not prime (Fermat test failed)" });
+    steps.push(` q = ${q} is prime`);
+
+    if (!isPrimitiveRoot(alpha, q))
+        return res.json({ error: "α is not a primitive root of q" });
+    steps.push(` α = ${alpha} is a primitive root of q`);
+
+    if (a >= q || b >= q)
+        return res.json({ error: "Private keys must be less than q" });
+
+    const A = modExp(alpha, a, q);
+    const B = modExp(alpha, b, q);
+
+    steps.push(`Private key of A = ${a}`);
+    steps.push(`Private key of B = ${b}`);
+    steps.push(`Public key of A = α^a mod q = ${A}`);
+    steps.push(`Public key of B = α^b mod q = ${B}`);
+
+    const sharedA = modExp(B, a, q);
+    const sharedB = modExp(A, b, q);
+
+    steps.push(`Shared key computed by A = ${sharedA}`);
+    steps.push(`Shared key computed by B = ${sharedB}`);
+    steps.push(sharedA === sharedB ? " Shared keys match" : " Shared keys do NOT match");
+
+    res.json({ steps });
+});
+
+app.listen(3000, () => console.log("Server running at http://localhost:3000"));
