@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DES Modes: CBC & ECB</title>
+
+<!-- ✅ ADD THIS LINE -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>DES Encryption & Decryption (CBC & ECB)</h2>
+
+<label>Plaintext (Hex):</label>
+<input id="plainText" value="0123456789ABCDEF1122334455667788">
+
+<label>Key (16 Hex):</label>
+<input id="desKey" value="AABB09182736CCDD">
+
+<label>IV (16 Hex, used for CBC):</label>
+<input id="iv" value="1234567890ABCDEF">
+
+<br>
+
+<button class="action" onclick="encryptDES('CBC')">Encrypt CBC</button>
+<button class="action" onclick="decryptDES('CBC')">Decrypt CBC</button>
+
+<br>
+
+<button class="action" onclick="encryptDES('ECB')">Encrypt ECB</button>
+<button class="action" onclick="decryptDES('ECB')">Decrypt ECB</button>
+
+
+<h3>Cipher Text:</h3>
+<textarea id="cipherText" rows="2"></textarea>
+
+<h3>Decrypted Text:</h3>
+<textarea id="decryptedText" rows="2"></textarea>
+
+<h3>Key Schedule (K1 – K16):</h3>
+<pre id="keyLog"></pre>
+
+<h3>Intermediate Steps:</h3>
+<pre id="log"></pre>
+
+</div>
+
+<script src="des.js"></script>
+
+</body>
+</html>

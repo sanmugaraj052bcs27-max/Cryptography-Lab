@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AES Demo</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="box">
+<h2>AES-128 Encryption Demo</h2>
+
+<label>Plaintext (any length): </label><br>
+<input type="text" id="pt" size="50"><br>
+
+<label>Key (16 chars): </label><br>
+<input type="text" id="key" size="20"><br>
+
+<label>IV (16 chars, for CBC only): </label><br>
+<input type="text" id="iv" size="20"><br>
+
+<button class="action" onclick="encryptAES_ECB()">Encrypt ECB</button>
+<button class="action" onclick="encryptAES_CBC()">Encrypt CBC</button>
+<button class="action" onclick="decryptAES_ECB()">Decrypt ECB</button>
+<button class="action" onclick="decryptAES_CBC()">Decrypt CBC</button>
+
+<div id="out"></div>
+</div>
+
+<script src="aes.js"></script>
+</body>
+</html>
