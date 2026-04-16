@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cipher Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+
+<div class="container">
+
+  <!-- ================= SIDEBAR ================= -->
+  <div class="sidebar">
+    <button onclick="showShift()">Shift Cipher</button>
+    <button onclick="showPlayfair()">Playfair Cipher</button>
+    <button onclick="showHill()">Hill Cipher</button>
+    <button onclick="showMatrix()">Hill Intermediate</button>
+    <button onclick="showPrimitive()">Primitive Root</button>
+    <button onclick="showFermat()">Fermat Theorem</button>
+    <button onclick="showEuler()">Euler's Theorem</button>
+
+    
+
+
+
+  </div>
+
+  <!-- ================= CONTENT ================= -->
+  <div class="content">
+    <h2>SUBSTITUTION CIPHERS</h2>
+
+    <!-- ========== SHIFT CIPHER ========== -->
+    <div id="shift">
+      <h2>Shift Cipher</h2>
+
+      <label>TEXT :</label><br>
+      <textarea id="shiftText" placeholder="Enter text"></textarea><br>
+
+      <label>KEY SIZE :</label><br>
+      <input id="shiftKey" type="number" placeholder="Key"><br><br>
+
+      <button onclick="shiftAction('encrypt')">Encrypt</button>
+      <button onclick="shiftAction('decrypt')">Decrypt</button>
+
+      <p id="shiftResult"></p>
+    </div>
+
+    <!-- ========== PLAYFAIR CIPHER ========== -->
+    <div id="playfair" style="display:none">
+      <h2>Playfair Cipher</h2>
+
+      <label>TEXT :</label><br>
+      <textarea id="pfText" placeholder="Enter text"></textarea><br>
+
+      <label>KEY :</label><br>
+      <input id="pfKey" placeholder="Key"><br><br>
+
+      <button onclick="playfairAction('encrypt')">Encrypt</button>
+      <button onclick="playfairAction('decrypt')">Decrypt</button>
+
+      <h4>MATRIX (5 × 5)</h4>
+      <table id="matrix" class="matrix-table"></table>
+      <div id="pfBigrams"></div>
+
+
+      <p id="pfResult"></p>
+    </div>
+
+    <!-- ========== HILL CIPHER ========== -->
+    <div id="hill" style="display:none">
+      <h2>Hill Cipher</h2>
+
+      <div class="form-group">
+        <label>TEXT :</label><br>
+        <textarea id="hillText" placeholder="Enter text"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>MATRIX SIZE (n × n) :</label><br>
+        <input id="hillN" type="number" min="2">
+      </div>
+
+      <div class="form-group">
+        <label>KEY MATRIX :</label><br>
+        <textarea id="hillKey" placeholder="Enter matrix row-wise"></textarea>
+      </div>
+
+      <button onclick="hillEncrypt()">Encrypt</button>
+      <button onclick="hillDecrypt()">Decrypt</button>
+      <br><br>
+
+      <div class="hill-extra-buttons">
+        <button onclick="viewDeterminant()">View Determinant</button>
+        <button onclick="viewCofactor()">View Cofactor Matrix</button>
+        <button onclick="viewTranspose()">View Transpose</button>
+        <button onclick="viewInverse()">View Inverse Matrix</button>
+      </div>
+
+      <h3>Intermediate Steps</h3>
+      <pre id="hillSteps"></pre>
+
+      <h3>Result</h3>
+      <p id="hillResult"></p>
+    </div>
+
+    <!-- ========== PRIMITIVE ROOT ========== -->
+<div id="primitive" style="display:none">
+  <h2>Primitive Root</h2>
+
+  <label>Enter number (n):</label><br>
+  <input id="prN" type="number" placeholder="Enter n"><br><br>
+
+  <button onclick="findPrimitiveRoots()">Find Primitive Roots</button>
+
+  <h3>Steps</h3>
+  <pre id="prSteps"></pre>
+
+  <h3>Primitive Roots</h3>
+  <p id="prResult"></p>
+</div>
+
+<!-- ========== FERMAT LITTLE THEOREM ========== -->
+<div id="fermat" style="display:none">
+  <h2>Fermat's Little Theorem</h2>
+
+  <label>Enter a :</label><br>
+  <input id="fermatA" type="number"><br><br>
+
+  <label>Enter p  :</label><br>
+  <input id="fermatP" type="number"><br><br>
+
+  <button onclick="fermatAction()">Verify Theorem</button>
+
+  <h3>Steps</h3>
+  <pre id="fermatSteps"></pre>
+
+</div>
+<!-- ========== MATRIX OPERATIONS ========== -->
+<div id="matrixOp" style="display:none">
+  <h2>Matrix Operations</h2>
+
+  <label>Matrix Size (n × n):</label><br>
+  <input id="matN" type="number" min="2"><br><br>
+
+  <label>Matrix Elements (row-wise):</label><br>
+  <textarea id="matKey" placeholder="Example: 2,3,1,4 OR HILL"></textarea><br><br>
+
+  <button onclick="buildMatrix()">Build Matrix</button>
+
+  <h3>Key Matrix</h3>
+  <div id="matDisplay"></div>
+
+  <div class="hill-extra-buttons">
+    <button onclick="matrixDet()">Determinant</button>
+    <button onclick="matrixGCD()">GCD</button>
+    <button onclick="matrixCofactor()">Cofactor</button>
+    <button onclick="matrixTranspose()">Transpose</button>
+    <button onclick="matrixInverse()">Inverse</button>
+  </div>
+
+  <h3>Extended Euclidean GCD</h3>
+  <input id="eeA" placeholder="a">
+  <input id="eeB" placeholder="b">
+  <button onclick="extendedEuclid()">Find x , y</button>
+
+  <h3>Steps</h3>
+  <pre id="matSteps"></pre>
+</div>
+
+<!-- ========== EULER TOTIENT THEOREM ========== -->
+<div id="euler" style="display:none">
+  <h2>Euler's Totient Theorem</h2>
+
+  <label>Enter n :</label><br>
+  <input id="eulerN" type="number"><br><br>
+
+  <label>Choose a (for Fermat Test):</label><br>
+  <input id="eulerA" type="number" placeholder="eg: 2"><br><br>
+
+  <button onclick="eulerAction()">Find φ(n)</button>
+  
+
+  <h3>Steps</h3>
+  <pre id="eulerSteps"></pre>
+
+  <h3>Result</h3>
+  <p id="eulerResult"></p>
+</div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+
+</body>
+</html>

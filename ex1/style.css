@@ -1,0 +1,85 @@
+body {
+  margin : 0;
+  font-family: Arial;
+}
+
+.container {
+  display: flex;
+  height : 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background: #222;
+  padding: 20px;
+  height : 100%;
+}
+
+.sidebar button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px;
+  flex : 1;
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+}
+
+.matrix-table {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.matrix-table td {
+  border: 1px solid #000;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+textarea {
+  width: 400px;      /* horizontal size */
+  height: 120px;     /* vertical size (paragraph size) */
+  padding: 8px;
+  resize: vertical; /* user resize pannalaam */
+  font-family: Arial;
+}
+
+.matrix {
+  border-collapse: collapse;
+  margin: 8px 0;
+}
+
+.matrix td {
+  border: 1px solid #333;
+  padding: 6px 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+hr {
+  margin: 12px 0;
+}
+
+.result-box {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 18px 22px;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin-top: 15px;
+}
