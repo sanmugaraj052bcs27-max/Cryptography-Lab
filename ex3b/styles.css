@@ -1,0 +1,125 @@
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* MAIN CONTAINER */
+.main {
+    text-align: center;
+    padding: 30px;
+}
+
+.subtitle {
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+/* GRID LAYOUT */
+.grid {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* BOX DESIGN */
+.box {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    padding: 20px;
+    width: 260px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+.box:hover {
+    transform: translateY(-6px) scale(1.02);
+}
+
+/* CENTER BOX HIGHLIGHT */
+.center-box {
+    background: rgba(0, 255, 200, 0.15);
+}
+
+/* HEADINGS */
+h1 {
+    margin-bottom: 10px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+/* INPUT */
+input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* BUTTON */
+button {
+    padding: 12px;
+    width: 95%;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #00c9a7, #00e4ff);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* RESULT SECTION */
+.result {
+    margin-top: 35px;
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* STEPS DISPLAY */
+.steps-box {
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* LIST STYLE */
+.steps-box ul {
+    padding-left: 20px;
+}
+
+.steps-box li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* SCROLLBAR */
+.steps-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.steps-box::-webkit-scrollbar-thumb {
+    background: #00c9a7;
+    border-radius: 10px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Key Exchange</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="main">
+    <h1> Diffie–Hellman Visualizer</h1>
+    <p class="subtitle">Secure Key Exchange Simulation</p>
+
+    <div class="grid">
+
+        <!-- USER A -->
+        <div class="box">
+            <h2> User A</h2>
+            <input type="number" id="a" placeholder="Private Key (a)">
+        </div>
+
+        <!-- PUBLIC VALUES -->
+        <div class="box center-box">
+            <h2> Public Values</h2>
+            <input type="number" id="q" placeholder="Prime Number (q)">
+            <input type="number" id="alpha" placeholder="Primitive Root (α)">
+            <button onclick="compute()"> Compute</button>
+        </div>
+
+        <!-- USER B -->
+        <div class="box">
+            <h2>User B</h2>
+            <input type="number" id="b" placeholder="Private Key (b)">
+        </div>
+
+    </div>
+
+    <!-- RESULT SECTION -->
+    <div class="result">
+        <h2> Computation Steps</h2>
+        <div id="finalKey" class="steps-box">
+            Waiting for input...
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
