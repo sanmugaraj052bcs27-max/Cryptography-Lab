@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+body {
+  background: #f4f6f9;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #422f33;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.sidebar li:hover {
+  background: #6f575d;
+}
+
+.sidebar li.active {
+  background: #52f5a1;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 40px;
+}
+
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+input {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.button-group {
+  margin-bottom: 15px;
+}
+
+button {
+  padding: 10px 16px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #3cbb91;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #d50c59;
+}
+
+/* Output Box Styling */
+pre {
+  background: #eff2fa;            
+  color: #000000c4;                 
+  padding: 20px;
+  height: 300px;
+  width: 100%;
+  max-width: 800px;
+  overflow-y: auto;
+  border-radius: 12px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border: 1px solid #1e293b;
+}
+
+pre::-webkit-scrollbar {
+  width: 8px;
+}
+
+pre::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: #e3dede;
+}
+

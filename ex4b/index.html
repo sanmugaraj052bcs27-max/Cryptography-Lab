@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BLOCK CIPHER</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Block Ciphers</h2>
+    <ul>
+      <li class="active" onclick="showSection('des')">DES</li>
+      <li onclick="showSection('aes')">AES</li>
+      <li onclick="showSection('cmac')">CMAC</li>
+    </ul>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- DES SECTION -->
+    <div id="des" class="section active">
+      <h2>Data Encryption Standard</h2>
+
+      <label>Plaintext</label>
+      <input type="text" id="text" placeholder="Enter plaintext">
+
+      <label>Key (16 HEX chars)</label>
+      <input type="text" id="key" placeholder="Example: 133457799BBCDFF1">
+
+      <div class="button-group">
+        <button onclick="send('ecb','encrypt')">ECB Encrypt</button>
+        <button onclick="send('ecb','decrypt')">ECB Decrypt</button>
+      </div>
+
+      <div class="button-group">
+        <button onclick="send('cbc','encrypt')">CBC Encrypt</button>
+        <button onclick="send('cbc','decrypt')">CBC Decrypt</button>
+      </div>
+
+      <h3>Output</h3>
+      <pre id="output"></pre>
+    </div>
+
+    <!-- AES SECTION -->
+     
+    <!-- AES SECTION -->
+<div id="aes" class="section">
+  <h2>Advanced Encryption Standard (AES-128)</h2>
+
+  <label>Plaintext</label>
+  <input type="text" id="aes_text" placeholder="Enter plaintext">
+  <br>
+  <label>Key (16 chars)</label>
+  <input type="text" id="aes_key" placeholder="16 char key">
+  <br>
+  <label>IV (16 chars for CBC)</label>
+  <input type="text" id="aes_iv" placeholder="16 char IV">
+
+  <div class="button-group">
+    <button onclick="sendAES('ecb','encrypt')">ECB Encrypt</button>
+    <button onclick="sendAES('ecb','decrypt')">ECB Decrypt</button>
+  </div>
+
+  <div class="button-group">
+    <button onclick="sendAES('cbc','encrypt')">CBC Encrypt</button>
+    <button onclick="sendAES('cbc','decrypt')">CBC Decrypt</button>
+  </div>
+
+  <h3>Output</h3>
+  <pre id="aes_output"></pre>
+</div>
+
+<div id="cmac" class="section">
+  <h2>Cipher-based Message Authentication Code (AES-CBC)</h2>
+
+  <label>Plaintext</label>
+  <input type="text" id="cmac_text" placeholder="Enter plaintext"><br>
+
+  <label>Key (16 chars)</label>
+  <input type="text" id="cmac_key" placeholder="16 char key"><br>
+
+  <label>IV (16 chars)</label>
+  <input type="text" id="cmac_iv" placeholder="16 char IV"><br>
+
+  <label>Output Bits</label>
+  <input type="number" id="cmac_bits" placeholder="Enter bits (ex: 64)"><br>
+
+  <div class="button-group">
+    <button onclick="sendCMAC()">Generate CMAC</button>
+  </div>
+
+  <h3>Output</h3>
+  <pre id="cmac_output"></pre>
+</div>
+
+  </div>
+</div>
+
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
+
+  document.getElementById(sectionId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+async function send(mode, action) {
+  const text = document.getElementById("text").value;
+  const key = document.getElementById("key").value;
+
+  const res = await fetch("/des", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ text, key, mode, action })
+  });
+
+  const data = await res.text();
+  document.getElementById("output").textContent = data;
+}
+async function sendAES(mode, action) {
+  const text = document.getElementById("aes_text").value;
+  const key = document.getElementById("aes_key").value;
+  const iv = document.getElementById("aes_iv").value;
+
+  const res = await fetch("/aes", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ text, key, iv, mode, action })
+  });
+
+  const data = await res.text();
+  document.getElementById("aes_output").textContent = data;
+}
+
+async function sendCMAC() {
+  const text = document.getElementById("cmac_text").value;
+  const key = document.getElementById("cmac_key").value;
+  const iv = document.getElementById("cmac_iv").value;
+  const bits = document.getElementById("cmac_bits").value;
+
+  const res = await fetch("/cmac", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ text, key, iv, bits })
+  });
+
+  const data = await res.text();
+  document.getElementById("cmac_output").textContent = data;
+}
+</script>
+
+</body>
+</html>
